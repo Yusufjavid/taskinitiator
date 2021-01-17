@@ -7,16 +7,20 @@ var taskFormHandler =function(event){
   //console.dir(taskNameInput);
   var taskTypeInput = document.querySelector("select[name='task-type']").value;
    //Exception : Enter empty value not accepted
-   if (!taskNameInput || !taskTypeInput){
-     alert("you need to fill out the task form");
-     return false;
-   }
-   //formEl.reset();
+   if (taskNameInput === "" || taskTypeInput === "") {
+    alert("You need to fill out the task form!");
+    return false;
+  }
+  
+   formEl.reset();
+   document.querySelector("input[name='task-name']").value = "";
+   document.querySelector("select[name='task-type']").selectedIndex = 0;
   //create data from createTaskEl
   var taskDataObj = {
     name: taskNameInput,
     type: taskTypeInput
   };
+  createTaskEl(taskDataObj);
   //console.dir(listItemEl);
   //HTMLFontElement.reset();
 };
